@@ -17,7 +17,7 @@ public class DashboardPage {
     @FindBy(className = "oxd-input")
     List<WebElement> formTextFields;
 
-    @FindBy(className = "oxd-switch-input")
+    @FindBy(className = "oxd-switch-wrapper")
     WebElement btnSwitch;
 
     public DashboardPage(WebDriver driver){
@@ -31,7 +31,7 @@ public class DashboardPage {
         formTextFields.get(3).sendKeys(lastName);
         btnSwitch.click(); //toggle switch
         formTextFields.get(5).sendKeys(username);
-        formTextFields.get(6).sendKeys(password);
+        formTextFields.get(6).sendKeys(password); //password
         formTextFields.get(7).sendKeys(password); //confirm password
         buttons.get(1).click(); //save data
     }
