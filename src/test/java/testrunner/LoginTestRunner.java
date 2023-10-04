@@ -1,12 +1,14 @@
 package testrunner;
 
 import config.Setup;
+import io.qameta.allure.Allure;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.LoginPage;
 import utils.Utils;
 
@@ -37,7 +39,13 @@ public class LoginTestRunner extends Setup {
         }
 
         //loginPage.doLogin("Admin", "admin123");
-        Assert.assertTrue(driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed());
+        //Assert.assertTrue(driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed());
+        SoftAssert softAssert =new SoftAssert();
+
+        softAssert.assertTrue(driver.findElement(By.className("oxd-userdropdown-img")).isDisplayed());
+        softAssert.assertTrue(driver.getCurrentUrl().contains("dashboard"));
+        softAssert.assertAll();
+        Allure.description("Admin Successfully Login");
     }
 
     @Test (priority = 3, description = "Admin successfully logs out")
