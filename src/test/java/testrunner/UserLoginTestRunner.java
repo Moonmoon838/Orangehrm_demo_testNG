@@ -16,7 +16,7 @@ public class UserLoginTestRunner extends Setup {
     @Test(priority = 1)
     public void userLogin() throws IOException, ParseException {
         loginPage = new LoginPage(driver);
-        JSONArray empList = Utils.readEmployeeInfo();
+        JSONArray empList = Utils.readJSONList("./src/test/resources/employees.json");
         JSONObject empObj = (JSONObject) empList.get(empList.size()-1);
 
         String username = (String) empObj.get("username");
