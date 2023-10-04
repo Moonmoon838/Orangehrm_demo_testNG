@@ -1,5 +1,6 @@
 package pages;
 
+import config.EmployeeModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,15 +25,15 @@ public class DashboardPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void createUser(String firstName, String lastName, String username, String password){
+    public void createUser(EmployeeModel model){
         menuItems.get(1).click(); //click PIM
         buttons.get(2).click(); //click add button
-        formTextFields.get(1).sendKeys(firstName);
-        formTextFields.get(3).sendKeys(lastName);
+        formTextFields.get(1).sendKeys(model.getFirstname());
+        formTextFields.get(3).sendKeys(model.getLastname());
         btnSwitch.click(); //toggle switch
-        formTextFields.get(5).sendKeys(username);
-        formTextFields.get(6).sendKeys(password); //password
-        formTextFields.get(7).sendKeys(password); //confirm password
+        formTextFields.get(5).sendKeys(model.getUsername());
+        formTextFields.get(6).sendKeys(model.getPassword()); //password
+        formTextFields.get(7).sendKeys(model.getPassword()); //confirm password
         buttons.get(1).click(); //save data
     }
 }
