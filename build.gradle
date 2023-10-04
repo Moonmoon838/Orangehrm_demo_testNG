@@ -18,6 +18,9 @@ dependencies {
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.24.0'
+
 
 
 }
@@ -31,6 +34,10 @@ test {
             print(project.property("username"));
             print(project.property("password"));
         }
-        suites "./src/test/resources/employeeSuite.xml"
+
+        if(project.hasProperty("filesuite")){
+            systemProperties.put("filesuite", project.property("filesuite"));
+        }
+        suites "./src/test/resources/"+systemProperties.get("filesuite")+""
     }
 }

@@ -26,7 +26,7 @@ public class DashboardPage {
     }
 
     public void createUser(EmployeeModel model){
-        menuItems.get(1).click(); //click PIM
+        //menuItems.get(1).click(); //click PIM
         buttons.get(2).click(); //click add button
         formTextFields.get(1).sendKeys(model.getFirstname());
         formTextFields.get(3).sendKeys(model.getLastname());

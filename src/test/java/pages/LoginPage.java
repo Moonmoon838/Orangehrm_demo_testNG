@@ -24,6 +24,7 @@ public class LoginPage {
     List<WebElement> linkSubItems;
 
     public LoginPage(WebDriver driver){
+
         PageFactory.initElements(driver, this);
     }
 
